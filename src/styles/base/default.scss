@@ -1,14 +1,23 @@
 @use "../mixin/" as *;
 
-#root{
-    @include center-box;
-    .App{
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        flex-direction: column;
-        width: 730px;
-        min-height: 100vh;
-        padding: 45px 0;
+*{
+    box-sizing: border-box;
+    #root{
+        @include center-box;
+        .App{
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            flex-direction: column;
+            @include mobile{
+                width: 100%;
+            }
+            @include desktop{
+                width: $breakpoint;
+            }
+            min-width: 375px;
+            min-height: 100vh;
+            padding: 45px 0;
+        }
     }
 }

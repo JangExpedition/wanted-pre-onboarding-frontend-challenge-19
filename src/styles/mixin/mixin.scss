@@ -1,0 +1,30 @@
+@use "../base/color" as *;
+
+@mixin center-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin button($color){
+    width: 3rem;
+    height: 100%;
+    background-color: $color;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+$breakpoint: 730px;
+
+@mixin mobile {
+    @media (max-width: #{$breakpoint - 1px}) {
+        @content;
+    }
+}
+
+@mixin desktop{
+    @media (min-width: $breakpoint){
+        @content;
+    }
+}

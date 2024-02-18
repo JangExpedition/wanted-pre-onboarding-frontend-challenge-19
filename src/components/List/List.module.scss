@@ -1,0 +1,7 @@
+@use "@styles/" as *;
+
+.List{
+    width: 100%;
+    @include center-box;
+    flex-direction: column;
+}

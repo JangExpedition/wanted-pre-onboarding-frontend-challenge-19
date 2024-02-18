@@ -1,0 +1,20 @@
+@use "@styles/" as *;
+
+.Todo{
+    width: 100%;
+    padding: 1.5rem;
+    height: 4.5rem;
+    @include center-box;
+    gap: 0.5rem;
+    border-bottom: 1px solid $grey500;
+    .todoTitle{
+        width: 60%;
+        font-size: 1rem;
+        &.complete{
+            text-decoration:line-through;
+        }
+    }
+    .deleteBtn{
+        @include button($red700);
+    }
+}
