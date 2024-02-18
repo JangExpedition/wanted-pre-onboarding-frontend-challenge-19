@@ -1,33 +1,62 @@
-const path = require('path');
+const HtmlPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: path.resolve(__dirname, "./src/index.tsx"),
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js',
+    publicPath: "/",
+    path: path.resolve(__dirname, "dist"),
+    filename: "main.js",
+    clean: true,
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.jsx'],
+    extensions: [".js", ".jsx", ".ts", ".tsx"],
+    alias: {
+      "@styles": path.resolve(__dirname, "./src/styles"),
+      "@app": path.resolve(__dirname, "./src/App"),
+    },
   },
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['@babel/preset-env', '@babel/preset-typescript'],
-          },
-        },
+        test: /\.scss$/,
+        exclude: /\.module\.scss$/,
+        use: ["style-loader", "css-loader", "postcss-loader", "sass-loader"],
       },
       {
-        test: /\.scss$/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        test: /\.module\.scss$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+                modules: true,
+            },
+          },
+          "postcss-loader",
+          "sass-loader",
+        ],
       },
-    ],
+      {
+        test: /\.(js|jsx|ts|tsx)$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/,
+      },
+    ]
   },
+  plugin: [
+    new HtmlPlugin({
+      template: "./index.html",
+    }),
+    new CopyPlugin({
+      patterns: [{ from: "public" }],
+    }),
+  ],
+
   devServer: {
-    contentBase: './dist',
+    host: "localhost",
+    open: true,
+    historyApiFallback: true,
   },
-};
+}
