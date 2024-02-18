@@ -1,9 +1,12 @@
 import React from 'react';
+import Title from './components/Title/Title';
+import AddTodo from './components/AddTodo/AddTodo';
 
 function App() {
   return (
     <div className="App">
-      <input type='text'></input>
+      <Title/>
+      <AddTodo/>
     </div>
   );
 }

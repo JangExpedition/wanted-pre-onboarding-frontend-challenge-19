@@ -5,7 +5,9 @@ import { createRoot } from 'react-dom/client';
 import App from './App';
 import "./styles/index.scss";
 
-const container: HTMLElement = document.getElementById('root') as HTMLElement;
+const container = document.getElementById('root') as HTMLElement | null;
+if (!container) throw new Error("Root container missing in index.html");
+
 const root = createRoot(container);
 
 root.render(
