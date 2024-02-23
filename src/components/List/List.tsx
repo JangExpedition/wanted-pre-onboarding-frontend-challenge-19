@@ -8,10 +8,6 @@ const List = () => {
 
     const todoList = useSelector((state: RootState) => state.todo);
 
-    useEffect(()=>{
-        console.log(todoList);
-    }, [todoList]);
-
     return <div className={styles.List}>
         {todoList.map(todo=>(
             <Todo key={todo.id} todo={todo}/>

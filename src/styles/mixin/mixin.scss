@@ -7,7 +7,6 @@
 }
 
 @mixin button($color){
-    width: 3rem;
     height: 100%;
     background-color: $color;
     border: none;
@@ -27,4 +26,11 @@ $breakpoint: 730px;
     @media (min-width: $breakpoint){
         @content;
     }
+}
+
+@mixin error{
+    margin-top: 0.5rem;
+    color: $red700;
+    font-size: 0.8rem;
+    font-weight: bold;
 }

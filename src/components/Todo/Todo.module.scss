@@ -7,11 +7,31 @@
     @include center-box;
     gap: 0.5rem;
     border-bottom: 1px solid $grey500;
-    .todoTitle{
+    .viewer{
         width: 60%;
-        font-size: 1rem;
-        &.complete{
-            text-decoration:line-through;
+        height: 100%;
+        @include center-box;
+        .todoTitle{
+            flex: 1;
+            font-size: 1rem;
+            &.complete{
+                text-decoration:line-through;
+            }
+        }
+        .updateTodoWrapper{
+            flex: 1;
+            @include center-box;
+            flex-direction: column;
+            .updateText{
+                width: 100%;
+                font-size: 1rem;
+            }
+            .error{
+                color: $red700;
+            }
+        }
+        .updateBtn{
+            @include button($blue500);
         }
     }
     .deleteBtn{

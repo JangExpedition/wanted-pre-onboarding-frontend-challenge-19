@@ -18,13 +18,16 @@ const AddTodo = () => {
             }
         }else{
             dispatch(addTodo(text));
+            if(todoRef.current){
+                todoRef.current.value = "";
+            }
         }
     }
 
     return <div className={styles.AddToDo}>
         <div className={styles.textWrapper}>
             <input type="text" className={styles.addText} ref={todoRef}></input>
-            <p ref={errorRef}></p>
+            <p className={styles.error} ref={errorRef}></p>
         </div>
         <button className={styles.addBtn} onClick={()=>clickHandler()}>ADD</button>
     </div>

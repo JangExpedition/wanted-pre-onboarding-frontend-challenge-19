@@ -41,9 +41,20 @@ const todoSlice = createSlice({
             const result = state.filter(todo => todo.id !== id);
             localStorage.setItem("todoList", JSON.stringify(result));
             return result;
+        },
+        updateTodo: (state, action) => {
+            const id = action.payload.id;
+            const result = state.map(todo=>{
+                if(todo.id === id){
+                    return {...todo, whatTodo: action.payload.whatTodo};
+                }
+                return todo;
+            });
+            localStorage.setItem("todoList", JSON.stringify(result));
+            return result;
         }        
     }
 });
 
-export const {addTodo, changeComplete, removeTodo} = todoSlice.actions;
+export const {addTodo, changeComplete, removeTodo, updateTodo} = todoSlice.actions;
 export default todoSlice;
