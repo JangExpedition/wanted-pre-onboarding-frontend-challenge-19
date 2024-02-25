@@ -1,6 +1,6 @@
 # todo-list
 
-
+![todolist](https://github.com/JangExpedition/wanted-pre-onboarding-frontend-challenge-19/assets/114918904/6ac2b291-b060-4097-a811-9027d17d0558)
 
 ## 🧑🏻‍💻 프로젝트 소개
 
